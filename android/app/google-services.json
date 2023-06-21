@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "286114931808-9r6ksd1121lln21h708gq7ereqodirv9.apps.googleusercontent.com",
+          "client_id": "286114931808-dqiv08kkcvbf3g259bnamafb9j3cda4t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.karon.example.firebaseprojects",
+            "certificate_hash": "af4dd52ae5af77f39980e5247e60c0dc669a239f"
+          }
+        },
+        {
+          "client_id": "286114931808-cp5cqdrkom01j3e4sgh6uuarmpbg0coq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

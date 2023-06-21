@@ -154,8 +154,10 @@ class _AddStudentState extends State<AddStudent> {
                 "division":division
               }).then((value) {
                 print("STUDENT Record DalDIYA (Nakhdiya)");
+                Navigator.of(context).pop();
                 _student.text="";
                 _roll.text="";
+                grpvalue="";
 
               });
 
@@ -164,7 +166,7 @@ class _AddStudentState extends State<AddStudent> {
              shape: new RoundedRectangleBorder(
                borderRadius: new BorderRadius.circular(30.0),
              ),
-           ),child: Text("Submit",
+           ),child: Text("Add"   ,
                  style: TextStyle(color: Colors.lightGreen),))
          ],
        ),

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebaseprojects/UpdateStudent.dart';
 import 'package:flutter/material.dart';
 class ViewStudent extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _ViewStudentState extends State<ViewStudent> {
                           color: Colors.white70,
                           child: ListTile(
 
-                            title: Text(document["student"].toString(),style: TextStyle(fontSize: 24),),
+                            title: Text(document["student"]+"Hello".toString(),style: TextStyle(fontSize: 24),),
                             subtitle: Text(document["roll no"].toString(),style: TextStyle(fontSize: 16),),
                             // tileColor: Colors.red,
                             trailing: Text(document["division"].toString(),style: TextStyle(fontSize: 20),),
@@ -39,18 +40,46 @@ class _ViewStudentState extends State<ViewStudent> {
                           ),
 
                         ),
-                        GestureDetector(onTap: ()
-                           async{
-                          var docid = document.id.toString();
-                          await FirebaseFirestore.instance.collection("Students").doc(docid).delete().then((value){ 
-                            print("Record Delete Thiviya");
-                          });
-                           },
-                             child: Container(
-                                height: 30,
-                                width: 100,
-                                color: Colors.greenAccent,
-                                  child: Center(child: Text("Delete Data",style: TextStyle(fontSize: 18),))),)
+                        Row(
+                          children: [
+
+
+                            // Delete Firebase Query ...
+                            Container(
+                              child: GestureDetector(onTap: ()
+                                 async{
+                                var docid = document.id.toString();
+                                await FirebaseFirestore.instance.collection("Students").doc(docid).delete().then((value){
+                                  print("Record Delete Thiviya");
+                                });
+                                 },
+                                   child: Container(
+                                      height: 30,
+                                      width: 100,
+                                      color: Colors.greenAccent,
+                                        child: Center(child: Text("Delete Data",style: TextStyle(fontSize: 18),))),),
+                            ),
+
+
+                            // Update Firebase Query...
+                            Container(
+                              child: GestureDetector(onTap: ()
+                              async{
+                                var id = document.id.toString();
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) => UpdateStudent(updateid: id))
+                                );
+                              },
+                                child: Container(
+                                    height: 30,
+                                    width: 100,
+                                    color: Colors.greenAccent,
+                                    child: Center(child: Text("Update Data",style: TextStyle(fontSize: 18),))),),
+                            ),
+
+                          ],
+
+                        )
                         ],
                     );
 
